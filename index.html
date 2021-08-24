@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JobDreamer</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <link href="style.css" rel="stylesheet" />
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+      </div>
+    </nav> -->
+    <script>
+      fetch("data.json")
+        .then((r) => r.json())
+        .then((s) =>s.data.forEach(p=>{
+          document.getElementById("filh").innerHTML+='<div class="card-body newsbox"><h5 class="card-title">'+p.name+'</h5><p class="card-text">'+p.vacancy+'<br />'+p.postname+'</p><a href="#" class="btn btn-primary">Details</a></div>';
+         
+        }));
+    </script>
+
+    <img
+      src="logo.svg"
+      alt=""
+      height="50"
+      class="d-inline-block align-text-top"
+    /> <a>under construction</a>
+    <div class="nwcontainer" id='filh'>
+     
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+.nwcontainer {
+    height: 100%;
+    overflow-y: scroll;
+}
+img{height: 50px;}
+.newsbox{
+    border-style: solid;
+    border-width: 1px;
+    border-color:    rgb(208, 208, 212);
+}
+*{
+    padding: 0px;
+}
+body{
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+}
