@@ -24,24 +24,63 @@
       <div class="container-fluid">
       </div>
     </nav> -->
-    <script>
-      fetch("data.json")
-        .then((r) => r.json())
-        .then((s) =>s.data.forEach(p=>{
-          document.getElementById("filh").innerHTML+='<div class="card-body newsbox"><h5 class="card-title">'+p.name+'</h5><p class="card-text">'+p.vacancy+'<br />'+p.postname+'</p><a href="#" class="btn btn-primary">Details</a></div>';
-         
-        }));
-    </script>
+  
 
     <img
       src="logo.svg"
       alt=""
       height="50"
       class="d-inline-block align-text-top"
-    /> <a>under construction</a>
-    <div class="nwcontainer" id='filh'>
-     
+    /> 
+    <!-- <a>under construction</a> -->
+    <div class="nwcontainer" id='filh'><br>
+      </div>
+        
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Details</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div id="detailsfield" class="offcanvas-body">
+           
+        </div>
       </div>
     </div>
+    <script>
+      
+      var jsndata={"data":[{"name":"Mangalore Electricity Supply Company Limited","vacancy":"200 Posts","postname":"Apprentice","date":"09-Sep-2021","nids":"1","detailsdata":"MESCOM Recruitment 2021 – Apply Online for 200 Apprentice Posts @ mescom.karnataka.gov.in MESCOM Recruitment 2021: Apply for 200 Apprentice vacancies. Mangalore Electricity Supply Company Limited invited applications from eligible and interested candidates to fill up Apprentice Posts through MESCOM official notification August 2021. Job seekers who are looking for a career in Mangalore – Karnataka Government can make use of this opportunity. Interested candidates can Apply Online on or before 09-Sep-2021. MESCOM Vacancy Notification Organization Name: Mangalore Electricity Supply Company Limited (MESCOM) No of Posts: 200 Job Location: Mangalore – Karnataka Post Name: Apprentice Stipend: Rs.5000-7000/- Per Month"},{"name":"Bruhat Bengaluru Mahanagara Palike","vacancy":"05 Posts","postname":"Epidemiologist","date":"30-Aug-2021","nids":"2","detailsdata":"BBMP Recruitment 2021: Apply for 05 Epidemiologist vacancies. Bruhat Bengaluru Mahanagara Palike invited applications from eligible and interested candidates to fill up Epidemiologist Posts through BBMP official notification August 2021. Job seekers who are looking for a career in Bengaluru – Karnataka Government can make use of this opportunity. Interested candidates can attend for Walk-in-interview on 30-Aug-2021 10:00 AM to 04:00 PM. BBMP Vacancy Notification Organization Name: Bruhat Bengaluru Mahanagara Palike (BBMP) No of Posts: 5 Job Location: Bengaluru – Karnataka Post Name: Epidemiologist Salary: Rs.50000/- Per Month"}]};
+      fetch("data.json")
+        jsndata.data.forEach(p=>{
+          
+          document.getElementById("filh").innerHTML+='<div class="card-body newsbox"><h5 class="card-title">'+p.name+'</h5><p class="card-text">'+p.vacancy+'<br />'+p.postname+'</p><a href="#offcanvasExample" onclick="loaddetails('+p.nids+')" class="btn btn-primary" data-bs-toggle="offcanvas" aria-controls="offcanvasExample">Details</a></div><br>';
+        });
+        loaddetails=function(id){
+          jsndata.data.forEach(p=>{
+            if(p.nids==id){
+            document.getElementById("detailsfield").innerHTML=p.detailsdata;
+          }})
+        }
+        function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+    function(m,key,value) {
+      vars[key] = value;
+    });
+    return vars;
+  }
+
+  if ("nids" in getUrlVars()){
+    
+    jsndata.data.forEach(p=>{
+            if(p.nids==getUrlVars()["nids"]){
+            document.getElementById("detailsfield").innerHTML=p.detailsdata ;
+            a=new bootstrap.Offcanvas(document.getElementById("offcanvasExample"));
+            a.show();
+          }
+        }
+        );
+  }
+         
+    </script>
   </body>
 </html>
